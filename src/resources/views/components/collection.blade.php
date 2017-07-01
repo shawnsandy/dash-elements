@@ -3,7 +3,7 @@
 @if(count($collections))
     @foreach($collections as $key => $value)
         <aside class="dashelements collections">
-        <div class="h2">{{ $key }}</div>
+        <p class="lead">{{ $key }}</p>
         <p>
         {{ $value }}
         </p>
