@@ -7,6 +7,7 @@
         <p>
         {{ $value }}
         </p>
+        <hr>
         </aside>
     @endforeach
  @endif
