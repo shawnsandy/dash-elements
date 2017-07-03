@@ -4,7 +4,7 @@
 
 ```blade
 
-    @component("dashelements::components.table", ["data" => \App\User::all() ])
+    @component("dashelements::components.collection-table", ["data" => \App\User::all() ])
         <a href="/">View</a>
     @endcomponent
     
