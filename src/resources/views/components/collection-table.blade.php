@@ -1,14 +1,15 @@
 @php
 
-$columns = collect(collect($data)->first())
-    ->keys()
-    ->map(function ($item) {
-        return "<td class=\"{$item}\">" . ucwords(str_replace("_", " ", $item)) . "</td>";
-    });
+    $columns = collect(collect($data)->first())
+        ->keys()
+        ->map(function ($item) {
+            return "<td class=\"{$item}\">" . ucwords(str_replace("_", " ", $item)) . "</td>";
+        });
 
-$records = collect($data)->toArray();
+    $records = collect($data)->toArray();
 
-$view = isset($component) ? $component : "dashelements::components.partials.table-row"
+    $view = isset($component) ? $component : "dashelements::components.partials.table-row";
+
 @endphp
 
 <table class="table">
@@ -23,12 +24,10 @@ $view = isset($component) ? $component : "dashelements::components.partials.tabl
     <tbody>
 
     @foreach($records as $rows)
-
         <tr>
             @each( $view , $rows, "data")
             <td>{{ $slot }}</td>
         </tr>
-
     @endforeach
 
     </tbody>
