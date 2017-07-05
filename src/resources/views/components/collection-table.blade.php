@@ -22,13 +22,18 @@
     </tr>
     </thead>
     <tbody>
-
-    @foreach($records as $rows)
-        <tr>
-            @each( $view , $rows, "data")
-            <td>{{ $slot }}</td>
-        </tr>
-    @endforeach
+    {{-- @slot(table_rows) --}}
+    @if(isset($table_rows))
+        {{ $$table_rows }}
+    @else
+        {{-- loop through the records using a subview--}}
+        @foreach($records as $rows)
+            <tr>
+                @each( $view , $rows, "data")
+                <td>{{ $slot }}</td>
+            </tr>
+        @endforeach
+    @endif
 
     </tbody>
 </table>
