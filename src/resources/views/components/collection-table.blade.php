@@ -24,7 +24,7 @@
     <tbody>
     {{-- @slot(table_rows) --}}
     @if(isset($table_rows))
-        {{ $$table_rows }}
+        {{ $table_rows }}
     @else
         {{-- loop through the records using a subview--}}
         @foreach($records as $rows)
@@ -37,3 +37,4 @@
 
     </tbody>
 </table>
+
