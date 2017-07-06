@@ -1,8 +1,9 @@
-<aside class="panel {{ str_slug($title) }} {{ $attributes['class'] or "" }}">
+<aside class="panel">
     <div class="panel-body">
-        <p class="h4 text-uppercase">
-            <i class="fa {{ $attributes['icon'] or 'fa-circle-o' }}"></i> {{ $title or "" }}
+        <p class="title text-uppercase">
+            {{ Html::dashIcons((isset($icon)) ?  $icon : "circle-o") }} {{ $title or "" }}
         </p>
         <hr>
+        {{ $slot }}
     </div>
 </aside>
