@@ -6,20 +6,20 @@
             return "<td class=\"{$item}\">" . ucwords(str_replace("_", " ", $item)) . "</td>";
         });
 
-    $button = '<button class="data-btn btn btn-primary btn-xs" disabled="true">View / Edit</button>';
+    $button = '<button class="data-btn btn btn-primary btn-xs" disabled="true" style="display: none;">View / Edit</button>';
     $columns_data = collect(collect($data)->first())->keys()->map(function($items) {
         return ["data" => $items, "class" => $items ];
      })->push(["data" => null, "class" => 'action', 'defaultContent' => "$button"]);
 
 @endphp
 
-<table id="{{ $table_id or 'data-tables'}}" class="table">
+<table id="{{ $table_id or 'data-tables'}}" class="table" data-buttons="[[ 'colvis', 'excel', 'print' ]]" >
     <thead>
     <tr>
         @foreach($columns as $td)
             {!! $td !!}
         @endforeach
-        <td></td>
+        <td><button class="btn btn-default btn-xs"> Actions </button></td>
     </tr>
     </thead>
 </table>
@@ -37,12 +37,38 @@
     var el = "{{ $table_id or "#data-tables"}}";
     var edit_url = "{{ $options["edit_url"] or 'null' }}";
 
-    $(document).ready(function () {
+
         var table = $(el).DataTable({
             data: table_data,
             "columns": table_columns
         });
-    });
+        $(el + ' tbody').on('click', 'tr', function () {
+
+            data_btn = $(this).find(".data-btn");
+            $(".data-btn").prop("disabled", true);
+            $(".data-btn").hide();
+
+            if ($(this).hasClass('selected')) {
+                $(this).removeClass('selected');
+                data_btn.prop("disabled", true);
+            } else {
+                table.$('tr.selected').removeClass('selected');
+
+                $(this).addClass('selected');
+                data_btn.prop("disabled", false);
+                $(data_btn).fadeToggle();
+                var data = table.rows(".selected").data();
+                row_id = data[0]['id'];
+            }
+            $(data_btn).click(function () {
+                if (edit_url == null) {
+                    console.log("No edit url for row " + row_id)
+                } else {
+                    console.log(edit_url + row_id);
+                    window.location.href = edit_url + row_id + "/edit";
+                }
+            });
+        });
 
 </script>
 @endpush
