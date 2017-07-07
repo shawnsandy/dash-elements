@@ -35,13 +35,14 @@
     var table_data = <?= collect($data) ?>;
     var table_columns = <?= $columns_data ?>;
     var el = "{{ $table_id or "#data-tables"}}";
-    var edit_url = "{{ $action_url or "#" }}";
+    var edit_url = "{{ $action_url or null }}";
 
 
         var table = $(el).DataTable({
             data: table_data,
             "columns": table_columns
         });
+
         $(el + ' tbody').on('click', 'tr', function () {
 
             data_btn = $(this).find(".data-btn");
@@ -57,6 +58,7 @@
                 var data = table.rows(".selected").data();
                 row_id = data[0]['id'];
             }
+
             $(data_btn).click(function () {
                 $(data_btn).show();
                 if (edit_url == null) {
@@ -66,6 +68,7 @@
                     window.location.href = edit_url + row_id + "/edit";
                 }
             });
+
         });
 
 </script>
