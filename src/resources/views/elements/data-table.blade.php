@@ -13,7 +13,7 @@
 
 @endphp
 
-<table id="{{ $table_id or 'data-tables'}}" class="table" data-buttons="[[ 'colvis', 'excel', 'print' ]]" >
+<table id="{{ $table_id or 'data-tables'}}" class="table" >
     <thead>
     <tr>
         @foreach($columns as $td)
@@ -35,7 +35,7 @@
     var table_data = <?= collect($data) ?>;
     var table_columns = <?= $columns_data ?>;
     var el = "{{ $table_id or "#data-tables"}}";
-    var edit_url = "{{ $options["edit_url"] or 'null' }}";
+    var edit_url = "{{ $action_url or "#" }}";
 
 
         var table = $(el).DataTable({
@@ -45,22 +45,20 @@
         $(el + ' tbody').on('click', 'tr', function () {
 
             data_btn = $(this).find(".data-btn");
-            $(".data-btn").prop("disabled", true);
-            $(".data-btn").hide();
+            $(".data-btn").prop("disabled", true).hide();
 
             if ($(this).hasClass('selected')) {
                 $(this).removeClass('selected');
-                data_btn.prop("disabled", true);
+                data_btn.show();
             } else {
                 table.$('tr.selected').removeClass('selected');
-
                 $(this).addClass('selected');
-                data_btn.prop("disabled", false);
-                $(data_btn).fadeToggle();
+                data_btn.prop("disabled", false).show();
                 var data = table.rows(".selected").data();
                 row_id = data[0]['id'];
             }
             $(data_btn).click(function () {
+                $(data_btn).show();
                 if (edit_url == null) {
                     console.log("No edit url for row " + row_id)
                 } else {
