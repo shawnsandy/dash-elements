@@ -5,9 +5,7 @@ var gulp = require('gulp');
 var q = require('q');
 var path = require('path');
 var fs = require('fs');
-var Grunticon = require('grunticon-lib');
 var _ = require('underscore');
-var imagemin = require('gulp-imagemin');
 var sass = require('gulp-sass');
 var notify = require('gulp-notify');
 var changed = require('gulp-changed');
@@ -61,8 +59,8 @@ gulp.task('sass', function() {
 gulp.task('package', function() {
     return gulp.src('./src/resources/assets/**/*.*', { 'base': './src/resources/assets/' })
         .pipe(changed('./src/resources/assets/**/*.*'))
-        .pipe(gulp.dest('../../resources/assets/:package_name'))
-})
+        .pipe(gulp.dest('../../resources/assets/dash-elements'))
+});
 
 
 gulp.task('watch:sass', function() {
