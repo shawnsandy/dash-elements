@@ -37,6 +37,15 @@ __Collection Table Component__
     @endcomponent
 ```
 
+__Datatable Component__
+
+```blade
+@component("dashelements::components.data-table", ['data' => $data ])
+
+@endcomponent
+```
+
+__Logout Button__
 
 ```blade
     @component("dashelements::components.logout-btn")
