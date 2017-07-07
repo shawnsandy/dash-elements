@@ -34,8 +34,7 @@ class DashElementsServicesProvider extends ServiceProvider
          */
         $this->publishes(
             [
-                __DIR__.'/resources/assets/js/' => public_path('assets/dashelements/js/'),
-                __DIR__.'/public/assets/' => public_path('assets/')
+                __DIR__.'/resources/assets/js/' => public_path('assets/dashelements/js/')
             ], 'dashelements-assets'
         );
 
