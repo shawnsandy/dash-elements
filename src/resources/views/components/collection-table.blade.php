@@ -17,7 +17,7 @@
     <tr>
         @foreach($columns as $td)
             {!! $td !!}
-        @endforeach
+        @endforeachupdate
         <td>{{ $action_label or "Actions" }}</td>
     </tr>
     </thead>
