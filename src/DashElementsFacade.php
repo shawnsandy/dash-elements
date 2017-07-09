@@ -20,7 +20,7 @@
          *
          */
         protected static function  getFacadeAccessor() {
-            return "Dashelements";
+            return "DashElements";
         }
 
     }
