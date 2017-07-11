@@ -1,6 +1,6 @@
 <aside class="panel">
     <div class="panel-body">
-        <p class="title text-uppercase">
+        <p class="{{ $heading  or "h2" }} title text-uppercase">
             {{ Html::dashIcons((isset($icon)) ?  $icon : "circle-o") }} {{ $title or "" }}
         </p>
         <hr>
