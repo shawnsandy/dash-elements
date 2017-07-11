@@ -4,7 +4,8 @@
 
 var table = $(el).DataTable({
     data: table_data,
-    "columns": table_columns
+    "columns": table_columns,
+    responsive: true
 });
 
 $("td.action").addClass("text-right");

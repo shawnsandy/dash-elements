@@ -30,11 +30,11 @@
 </table>
 
 @push("styles")
-<link rel="stylesheet" href="https://cdn.datatables.net/1.10.13/css/dataTables.bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs/jq-2.2.4/dt-1.10.15/b-1.3.1/r-2.1.1/datatables.min.css"/>
 @endpush
 
 @push("scripts")
-<script src="https://cdn.datatables.net/1.10.13/js/jquery.dataTables.min.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/v/bs/jq-2.2.4/dt-1.10.15/b-1.3.1/r-2.1.1/datatables.min.js"></script>
 <script>
 
     var table_data = <?= collect($data) ?>;
