@@ -8,8 +8,11 @@
 
     $button = '<button class="data-btn btn btn-primary btn-xs" disabled="true" style="display: none;">View / Edit</button>';
     $columns_data = collect(collect($data)->first())->keys()->map(function($items) {
-        return ["data" => $items, "class" => $items ];
+        return ["data" => $items, "class" => $items];
      })->push(["data" => null, "class" => 'action', 'defaultContent' => "$button"]);
+
+    if(!isset($action_url))
+   $action_url = url()->current()."/";
 
 @endphp
 
@@ -19,7 +22,7 @@
         @foreach($columns as $td)
             {!! $td !!}
         @endforeach
-        <td>
+        <td style="max-width: 150px;" class="text-right">
             <button class="btn btn-default btn-xs"> Actions</button>
         </td>
     </tr>
@@ -27,17 +30,17 @@
 </table>
 
 @push("styles")
-<link rel="stylesheet" href="https://cdn.datatables.net/1.10.13/css/dataTables.bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs/jq-2.2.4/dt-1.10.15/b-1.3.1/r-2.1.1/datatables.min.css"/>
 @endpush
 
 @push("scripts")
-<script src="https://cdn.datatables.net/1.10.13/js/jquery.dataTables.min.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/v/bs/jq-2.2.4/dt-1.10.15/b-1.3.1/r-2.1.1/datatables.min.js"></script>
 <script>
 
     var table_data = <?= collect($data) ?>;
     var table_columns = <?= $columns_data ?>;
     var el = "{{ $table_id or "#data-tables"}}";
-    var edit_url = "{{ $action_url or null }}";
+    var edit_url = "{{ $action_url }}";
 
 </script>
 
