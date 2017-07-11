@@ -11,6 +11,9 @@
         return ["data" => $items, "class" => $items ];
      })->push(["data" => null, "class" => 'action', 'defaultContent' => "$button"]);
 
+    if(!isset($action_url))
+   $action_url = url()->current()."/";
+
 @endphp
 
 <table id="{{ $table_id or 'data-tables'}}" class="table">
@@ -37,7 +40,7 @@
     var table_data = <?= collect($data) ?>;
     var table_columns = <?= $columns_data ?>;
     var el = "{{ $table_id or "#data-tables"}}";
-    var edit_url = "{{ $action_url or null }}";
+    var edit_url = "{{ $action_url }}";
 
 </script>
 
