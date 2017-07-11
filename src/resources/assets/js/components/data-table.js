@@ -7,9 +7,12 @@ var table = $(el).DataTable({
     "columns": table_columns
 });
 
+$("td.action").addClass("text-right");
+
 $(el + ' tbody').on('click', 'tr', function () {
 
     data_btn = $(this).find(".data-btn");
+
     $(".data-btn").prop("disabled", true).hide();
 
     if ($(this).hasClass('selected')) {

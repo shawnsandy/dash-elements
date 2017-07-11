@@ -8,7 +8,7 @@
 
     $button = '<button class="data-btn btn btn-primary btn-xs" disabled="true" style="display: none;">View / Edit</button>';
     $columns_data = collect(collect($data)->first())->keys()->map(function($items) {
-        return ["data" => $items, "class" => $items ];
+        return ["data" => $items, "class" => $items];
      })->push(["data" => null, "class" => 'action', 'defaultContent' => "$button"]);
 
     if(!isset($action_url))
@@ -22,7 +22,7 @@
         @foreach($columns as $td)
             {!! $td !!}
         @endforeach
-        <td>
+        <td style="max-width: 150px;" class="text-right">
             <button class="btn btn-default btn-xs"> Actions</button>
         </td>
     </tr>
