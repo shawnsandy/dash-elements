@@ -5,7 +5,6 @@
 var table = $(el).DataTable({
     data: table_data,
     "columns": table_columns,
-    responsive: true
 });
 
 $("td.action").addClass("text-right");
@@ -38,3 +37,5 @@ $(el + ' tbody').on('click', 'tr', function () {
     });
 
 });
+
+$(el).css("width", "100%");
