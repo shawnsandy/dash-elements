@@ -1,7 +1,8 @@
 <aside class="panel">
     <div class="panel-body">
-        <p class="{{ $heading  or "h2" }} title text-uppercase">
-            {{ Html::dashIcons((isset($icon)) ?  $icon : "circle-o") }} {{ $title or "" }}
+        <p class="{{ $heading  or "h2" }} title">
+            {{ Html::dashIcons((isset($icon)) ?  $icon : "circle-o") }}
+            <span class="small">{{ $title or "" }}</span>
         </p>
         <hr>
         {{ $slot }}
